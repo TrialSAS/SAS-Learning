@@ -1,7 +1,7 @@
-/*´úÂë¹¦ÄÜ£ºÔ±¹¤¼ÓĞ½¡£
-½¨Á¢employeesÊı¾İ¼¯£¬¸ù¾İGrade²ÎÊıÈ·¶¨×î¸ßºÍ×îµÍĞ½×Ê£»
-È»ºó¸ù¾İSalary_MonthÈ·¶¨	Expected_Salary £»
-¸ø¸ß¹Ü¶îÍâ½±½ğ¡£
+/*ä»£ç åŠŸèƒ½ï¼šå‘˜å·¥åŠ è–ªã€‚
+å»ºç«‹employeesæ•°æ®é›†ï¼Œæ ¹æ®Gradeå‚æ•°ç¡®å®šæœ€é«˜å’Œæœ€ä½è–ªèµ„ï¼›
+ç„¶åæ ¹æ®Salary_Monthç¡®å®š	Expected_Salary ï¼›
+ç»™é«˜ç®¡é¢å¤–å¥–é‡‘ã€‚
 */
 data employees;
 	infile 'd:/sharesas/data/github/SAS-Learning/file/Employees.dat' truncover;
@@ -12,8 +12,8 @@ data employees;
 		Grade $
 		Salary_Month DOLLAR10.2
 		Title $ 73-99;
-		/*yrdif()º¯Êı£º¼ÆËãÄêÁä*/
-		/*int()º¯Êı£º È¡Õû¡£*/
+		/*yrdif()å‡½æ•°ï¼šè®¡ç®—å¹´é¾„*/
+		/*int()å‡½æ•°ï¼š å–æ•´ã€‚*/
 		Age_At_revew=int(yrdif(DOB,TODAY(),'AGE'));
 	
 	IF Grade = 'GR20' THEN DO;
@@ -58,9 +58,9 @@ ELSE
 	Expected_Salary = (Salary_Month * 12 * 1.025);
 
 * Give a $1000.00 bonus to leads, directors, and managers.;
-/*FINDW()º¯Êı£º ·µ»ØÒ»¸öwordÔÚstringÖĞµÄ×Ö½ÚÎ»ÖÃ¡£
-Óï·¨£ºFINDW(string, word <, chars> )*/
-/*/*FINDW(Title,'Lead')ÔÚ×Ö´®TitleÖĞ²éÕÒword¡°Lead¡±²¢·µ»ØÎ»ÖÃ¡£*/*/
+/*FINDW()å‡½æ•°ï¼š è¿”å›ä¸€ä¸ªwordåœ¨stringä¸­çš„å­—èŠ‚ä½ç½®ã€‚
+è¯­æ³•ï¼šFINDW(string, word <, chars> )*/
+/*/*FINDW(Title,'Lead')åœ¨å­—ä¸²Titleä¸­æŸ¥æ‰¾wordâ€œLeadâ€å¹¶è¿”å›ä½ç½®ã€‚*/*/
 IF FINDW(Title, "Lead") THEN DO;
 	Expected_Salary = Expected_Salary + 1000.00;
 	Bonus = "Yes";
@@ -96,9 +96,9 @@ WHERE Name IN ("William Stone", "Mark Harrison");
 RUN;
 
 
-/*FINDW() Àı£º*/
+/*FINDW() ä¾‹ï¼š*/
 data _null_;
 	whereisshe=findw('She sells sea shells? Yes, she does.','she');
 	put whereisshe=;
 run;
-/*½á¹û£ºwhereisshe=28	*/
+/*ç»“æœï¼šwhereisshe=28	*/
