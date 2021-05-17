@@ -119,7 +119,7 @@ data smokers;
 	else if Smoke= 0 then do;
 		if Sbp >= 140 or Dbp >= 90 then Risk="High";
 		else if (Sbp >=120 and Sbp <= 140) or (Dbp>=80 and Dbp <= 90) then Risk="Medium";
-		else if (DSbp >0 and Sbp < 120) or (Dbp > 0 and Dbp< 80 ) then Risk="Low";
+		else if (Sbp >0 and Sbp < 120) or (Dbp > 0 and Dbp< 80 ) then Risk="Low";
 		else Risk = "Unknow";
 	end;
 
